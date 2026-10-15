@@ -29,8 +29,8 @@ npm run serve # dev server, hot reload; npm run build for a static bundle
 **Vue CLI 5**, which is in maintenance mode upstream and superseded by
 `create-vue`/Vite; the scaffold files (`vue.config.js`, `babel.config.js`,
 `public/index.html`, `jsconfig.json`) are stock Vue CLI output and
-`README.md` is the untouched CLI template text ("Project setup … Customize
-configuration"). Beyond `GraphCanvas.vue` the repo is one-level-deep scaffolding.
+`README.md` describes the archive rather than the stock CLI template. Beyond
+`GraphCanvas.vue` the repo is one-level-deep scaffolding.
 It is also a stub in places: `src/api.js` exports `generateAIResponse()` but is
 imported nowhere (`GraphCanvas.vue` calls `fetch` directly, and the axios version
 sets `stream: true` without consuming the stream), and `cytoscape`,
@@ -38,6 +38,4 @@ sets `stream: true` without consuming the stream), and `cytoscape`,
 persistence, no backend, no tests, no env handling and no CI; the graph is lost on
 reload. Last touched 2025-04.
 
-**License:** No LICENSE file and no copyright headers (checked the whole
-directory, excluding `node_modules`/lockfile). All rights reserved by default —
-choose a license before publishing as a repo.
+**License:** AGPL-3.0-only; see [`LICENSE`](LICENSE).
