@@ -11,7 +11,8 @@
 <p align="center">A node-graph chat canvas built with Vue 3 and vis-network.</p>
 
 Every bubble is a message, every edge is context. Drag one bubble onto another
-and the conversation branches; the ancestor chain becomes the next prompt.
+and the conversation branches; the bubbles pointing into a bubble become its
+next prompt.
 
 > **Status:** archived prototype, kept as a reference — not actively maintained.
 
@@ -40,8 +41,9 @@ server already owns it. `npm run build` writes a static bundle to `dist/`.
   The dragged bubble snaps back, and the target flips between user and assistant.
 - **Delete a subtree.** Select bubbles and press <kbd>Delete</kbd>; descendants go
   with them.
-- **Generate from context.** An empty bubble with at least one parent streams a
-  `/v1/chat/completions` response. Its prompt is the chain of ancestor nodes.
+- **Generate from context.** Save a bubble with no content and it streams a
+  `/v1/chat/completions` response. The nodes with an edge into it become the
+  `messages` array, each with its own `role` and content.
 - **Per-node sampling.** Metadata is parsed as space-separated `key=value` pairs
   (`max_token=256` by default) and spread into the request body.
 - **Live tokens.** Streamed deltas are appended to the bubble as they arrive.
@@ -86,9 +88,8 @@ test suite and no CI.
 
 This repository is an archive, but focused fixes are welcome. Open an issue
 before a larger change so the direction can be discussed first. Keep changes
-small, explain the bug and how you reproduced it, run `npm run lint`, and avoid
-committing `dist/`, `node_modules/`, or local environment files. Contributions
-are accepted under the AGPL-3.0-only license.
+small and explain the bug and how you reproduced it. Details, including the
+checks to run, are in [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Roadmap
 
